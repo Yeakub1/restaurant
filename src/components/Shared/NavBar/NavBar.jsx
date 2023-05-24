@@ -73,7 +73,7 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <Link className="uppercase text-white" to="">
+                <Link className="uppercase text-white" to="/menu">
                   Our Menu
                 </Link>
               </li>

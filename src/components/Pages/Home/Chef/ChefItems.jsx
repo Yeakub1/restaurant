@@ -4,7 +4,7 @@ const ChefItems = ({items}) => {
     const { _id, name, recipe, image, price, category } = items;
     return (
       <div className="text-center mx-auto">
-        <img src={image} alt="" />
+        <img className='rounded-md' src={image} alt="" />
         <h1 className="text-lg font-bold">{name}</h1>
         <h1 className="font-semibold">{price}</h1>
 
