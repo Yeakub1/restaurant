@@ -1,0 +1,11 @@
+.featured {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0),
+      rgb(110, 33, 33)
+    ),
+    url(../../../../assets/home/featured.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
