@@ -23,12 +23,12 @@ const Chef = () => {
           heading={"CHEF RECOMMENDS"}
         ></SectionHeading>
             <section>
-                <div className="grid lg:grid-cols-4 gap-6">
+                <div className="grid lg:grid-cols-4 gap-6 ">
                     {
                         item.map(items=> <ChefItems key={items._id} items={items}></ChefItems>)
                     }
           </div>
-        </section>grid lg:grid-cols-4 gap-6
+        </section>
       </section>
     );
 };

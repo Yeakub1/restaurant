@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
-import Items from './Items';
+import Items from '../../../Shared/Items/Items';
 
 const MenuItems = () => {
     const [menu, setMenu] = useState([]);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Service from '../../../Shared/Services/Service';
-import img from '../../../../assets/home/banner.jpg'
+import img from '../../../../assets/menu/banner3.jpg'
 
 const PageCover = () => {
     return (
