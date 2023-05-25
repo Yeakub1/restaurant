@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from "react-helmet-async";
+import PageCover from '../PageCover/PageCover';
 
 const Menu = () => {
     return (
@@ -7,7 +8,7 @@ const Menu = () => {
         <Helmet>
           <title>BISTRO BOSS | menu</title>
         </Helmet>
-        <h1>This is a menu section</h1>
+       <PageCover></PageCover>
       </div>
     );
 };

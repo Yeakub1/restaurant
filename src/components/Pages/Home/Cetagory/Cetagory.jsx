@@ -16,7 +16,7 @@ import SectionHeading from "../../../Shared/SectionHeading/SectionHeading";
 
 const Cetagory = () => {
   return (
-    <div className="max-w-7xl mx-auto mb-10">
+    <div className="max-w-7xl mx-auto mb-20">
       <SectionHeading
         subHeding={"---From 11:00am to 10:00pm---"}
         heading={"ORDER ONLINE"}

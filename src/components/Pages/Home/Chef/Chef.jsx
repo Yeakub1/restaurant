@@ -14,6 +14,7 @@ const Chef = () => {
            setItems(saladItems);
          });
      }, []);
+  
     
     return (
       <section className="max-w-7xl mx-auto mb-10">
@@ -26,8 +27,8 @@ const Chef = () => {
                     {
                         item.map(items=> <ChefItems key={items._id} items={items}></ChefItems>)
                     }
-                </div>
-        </section>
+          </div>
+        </section>grid lg:grid-cols-4 gap-6
       </section>
     );
 };

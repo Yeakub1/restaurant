@@ -8,8 +8,8 @@ import img4 from '../../../../assets/home/04.jpg'
 
 const Banner = () => {
     return (
-      <div className="max-w-7xl mx-auto px-4">
-        <Carousel>
+      <div className="w-full">
+        <Carousel >
           <div>
             <img src={img1} />
           </div>

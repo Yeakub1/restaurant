@@ -63,18 +63,19 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <Link className="uppercase text-white" to="">
-                  CONTACT us
+                <Link className="uppercase text-white" to="/menu">
+                  Our Menu
                 </Link>
               </li>
+
               <li>
                 <Link className="uppercase text-white" to="">
                   DASHBOARD
                 </Link>
               </li>
               <li>
-                <Link className="uppercase text-white" to="/menu">
-                  Our Menu
+                <Link className="uppercase text-white" to="">
+                  CONTACT us
                 </Link>
               </li>
               <li>

@@ -1,16 +1,23 @@
 import React from 'react';
-import './Services.css'
 
-const Service = ({ heading, subHeding }) => {
+const Service = ({ heading, subHeding,img }) => {
   return (
-    <div className="max-w-7xl mx-auto mt-20 flex justify-center items-center  services">
-      <div className="bg-black opacity-50 absolute text-white lg:w-8/12 text-center p-20 rounded-md">
-        <h1 className="text-3xl mb-5">{heading}</h1>
-        <p className="text-lg">
-         {subHeding}
-        </p>
+      <div
+        className="hero h-[60vh]"
+        style={{
+          backgroundImage: `url("${img}")`,
+        }}
+      >
+        <div className="hero-content text-center text-neutral-content bg-black opacity-70 lg:w-8/12 p-10 rounded-md ">
+          <div className="max-w-md">
+          <h1 className="mb-5 text-5xl font-bold">{ heading}</h1>
+            <p className="mb-5">
+             {subHeding}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    
   );
 };
 
