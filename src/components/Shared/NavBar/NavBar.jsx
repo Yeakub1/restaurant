@@ -67,10 +67,9 @@ export default function NavBar() {
                   Our Menu
                 </Link>
               </li>
-
               <li>
-                <Link className="uppercase text-white" to="">
-                  DASHBOARD
+                <Link className="uppercase text-white" to="/shop">
+                  Our Shop
                 </Link>
               </li>
               <li>
@@ -80,7 +79,7 @@ export default function NavBar() {
               </li>
               <li>
                 <Link className="uppercase text-white" to="">
-                  Our Shop
+                  DASHBOARD
                 </Link>
               </li>
             </ul>

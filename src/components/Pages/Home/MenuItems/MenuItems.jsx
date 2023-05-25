@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
 import Items from '../../../Shared/Items/Items';
+import useMenu from '../../../../Hooks/useMenu';
 
 const MenuItems = () => {
-    const [menu, setMenu] = useState([]);
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popularItems = data.filter(
-                  (item) => item.category === "popular"
-                );
-                setMenu(popularItems)
-            })
-    }, []);
+  const [menu] = useMenu();
+  const popular = menu.filter((item) => item.category === "popular");
 
     return (
       <section className="max-w-7xl mx-auto mb-10">
@@ -24,7 +16,7 @@ const MenuItems = () => {
           ></SectionHeading>
         </section>
         <div className="grid lg:grid-cols-2 gap-5">
-          {menu.map((item) => (
+          {popular.map((item) => (
             <Items key={item._id} item={item}></Items>
           ))}
         </div>

@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
 import Items from '../../../Shared/Items/Items';
+import useMenu from '../../../../Hooks/useMenu';
 
 const OfferItems = () => {
-       const [menu, setMenu] = useState([]);
-       useEffect(() => {
-         fetch("menu.json")
-           .then((res) => res.json())
-           .then((data) => {
-             const popularItems = data.filter(
-               (item) => item.category === "offered"
-             );
-             setMenu(popularItems);
-           });
-       }, []);
+  const [menu] = useMenu();
+  const offered = menu.filter((item) => item.category === "offered")
     return (
       <section className="mb-10">
         <SectionHeading
@@ -21,7 +13,7 @@ const OfferItems = () => {
           heading={"TODAYS OFFER"}
         ></SectionHeading>
         <div className="grid grid-cols-2 max-w-7xl mx-auto gap-10">
-          {menu.map((item) => (
+          {offered.map((item) => (
             <Items key={item._id} item={item}></Items>
           ))}
         </div>

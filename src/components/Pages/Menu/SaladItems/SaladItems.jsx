@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Items from '../../../Shared/Items/Items';
+import useMenu from '../../../../Hooks/useMenu';
 
 const SaladItems = () => {
-    const [menu, setMenu] = useState([]);
-    useEffect(() => {
-      fetch("menu.json")
-        .then((res) => res.json())
-        .then((data) => {
-          const pizzaItem = data.filter((item) => item.category === "salad");
-          setMenu(pizzaItem);
-        });
-    }, []);
+    const [menu] = useMenu();
+    const salad = menu.filter((item) => item.category === "salad");
     return (
       <div className="max-w-7xl mx-auto grid grid-cols-2 gap-8 mt-16 mb-20">
-        {menu.map((item) => (
+        {salad.map((item) => (
           <Items key={item._id} item={item}></Items>
         ))}
       </div>
