@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
-import ChefItems from './ChefItems';
+import FoodCard from '../../../Shared/FoodCard/FoodCard';
+import useMenu from '../../../../Hooks/useMenu';
 
 const Chef = () => {
-    const [item, setItems] = useState([]);
-     useEffect(() => {
-       fetch("menu.json")
-         .then((res) => res.json())
-         .then((data) => {
-           const saladItems = data.filter(
-             (item) => item.category === "salad"
-           );
-           setItems(saladItems);
-         });
-     }, []);
-  
-    
+   const [menu] = useMenu();
+   const offered = menu.filter((item) => item.category === "offered");
+
     return (
       <section className="max-w-7xl mx-auto mb-10">
         <SectionHeading
           subHeding={"---Should Try---"}
           heading={"CHEF RECOMMENDS"}
         ></SectionHeading>
-            <section>
-                <div className="grid lg:grid-cols-4 gap-6 ">
-                    {
-                        item.map(items=> <ChefItems key={items._id} items={items}></ChefItems>)
-                    }
+        <section>
+          <div className="grid lg:grid-cols-4 gap-6 ">
+            {offered.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
           </div>
         </section>
       </section>

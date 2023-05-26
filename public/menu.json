@@ -57,14 +57,14 @@
   },
   {
     "name": "Escalope de Veau",
-    "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+    "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea .",
     "image": "https://i.ibb.co/CBtBDsb/1.jpg",
     "category": "offered",
     "price": 12.5
   },
   {
     "name": "Chicken and Walnut Salad",
-    "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+    "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples,",
     "image": "https://i.ibb.co/54nSnfv/2.jpg",
     "category": "offered",
     "price": 13.5
@@ -211,7 +211,7 @@
   },
   {
     "name": "Breton Fish Stew",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts",
     "image": "https://i.ibb.co/Jrt3qn1/7.png",
     "category": "pizza",
     "price": 12.9
@@ -225,7 +225,7 @@
   },
   {
     "name": "Breton Fish Stew",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, ",
     "image": "https://i.ibb.co/Jrt3qn1/7.png",
     "category": "pizza",
     "price": 12.9
@@ -239,7 +239,7 @@
   },
   {
     "name": "Breton Fish Stew",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, ",
     "image": "https://i.ibb.co/0tV2DVq/4.jpg",
     "category": "pizza",
     "price": 12.9
@@ -253,7 +253,7 @@
   },
   {
     "name": "Breton Fish Stew",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, ",
     "image": "https://i.ibb.co/hLLZRqh/5.jpg",
     "category": "pizza",
     "price": 12.9
@@ -267,7 +267,7 @@
   },
   {
     "name": "Roasted Pork Belly",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, ",
     "image": "https://i.ibb.co/hLLZRqh/5.jpg",
     "category": "pizza",
     "price": 14.5
@@ -351,7 +351,7 @@
   },
   {
     "name": "Roasted Pork Belly",
-    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+    "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, ",
     "image": "https://i.ibb.co/zhPYpRd/9.jpg",
     "category": "salad",
     "price": 14.5
