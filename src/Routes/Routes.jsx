@@ -4,6 +4,8 @@ import Main from "../components/Layout/Main";
 import Home from "../components/Pages/Home/Home/Home";
 import Menu from "../components/Pages/Menu/Menu/Menu";
 import Shop from "../components/Pages/Shop/Shop/Shop";
+import Login from "../components/Authentication/LogIn/Login";
+import Registion from "../components/Authentication/Register/Registion";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop></Shop>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Registion></Registion>
       },
     ],
   },
