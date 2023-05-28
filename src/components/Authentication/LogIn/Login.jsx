@@ -47,15 +47,7 @@ const Login = () => {
           .then(result => {
               const user = result.user;
             console.log(user);
-            Swal.fire({
-              title: "User Login Sucessfull.",
-              showClass: {
-                popup: "animate__animated animate__fadeInDown",
-              },
-              hideClass: {
-                popup: "animate__animated animate__fadeOutUp",
-              },
-            });
+            Swal.fire("YAY!", "Your Login Success!", "success");
             navigate(froms, { replace: true });
           })
       .catch(error=> console.log(error))

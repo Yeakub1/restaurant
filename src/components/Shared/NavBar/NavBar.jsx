@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import './Navbar.css'
+import { FaCartArrowDown } from "react-icons/fa";
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
@@ -84,6 +85,12 @@ export default function NavBar() {
               <Link className="mr-3" to="/private">
                 private
               </Link>
+            </li>
+            <li>
+              <button className=" flex">
+                <FaCartArrowDown />
+                <div className="badge badge-secondary ">+0</div>
+              </button>
             </li>
           </ul>
         </div>
