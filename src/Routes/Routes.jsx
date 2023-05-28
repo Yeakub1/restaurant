@@ -6,6 +6,8 @@ import Menu from "../components/Pages/Menu/Menu/Menu";
 import Shop from "../components/Pages/Shop/Shop/Shop";
 import Login from "../components/Authentication/LogIn/Login";
 import Registion from "../components/Authentication/Register/Registion";
+import PrivateRoutes from "./PrivateRoutes";
+import Private from "../components/Shared/private/Private";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registion></Registion>
+      },
+      {
+        path: "/private",
+        element: <PrivateRoutes><Private></Private></PrivateRoutes>
       },
     ],
   },

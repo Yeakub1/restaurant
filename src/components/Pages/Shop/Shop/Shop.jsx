@@ -7,7 +7,7 @@ const Shop = () => {
     return (
       <div>
         <Helmet>
-          <title>BISTRO BOSS | menu</title>
+          <title>BISTRO BOSS | shop</title>
         </Helmet>
         <PageCover></PageCover>
         <AllItems></AllItems>

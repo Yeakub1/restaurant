@@ -1,18 +1,59 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from "../../../assets/others/authentication1.png";
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Registion = () => {
-    const handleRegisterFrom = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(name,email, password);
-    }
-    return (
+
+  const { createUser, updateUser } = useContext(AuthContext);
+
+  const handleRegisterFrom = (event) => {
+    event.preventDefault();
+    const from = event.target;
+    const name = from.name.value;
+    const photo = from.photo.value;
+    const email = from.email.value;
+    const password = from.password.value;
+    const loged = { name, email, password, photo };
+    console.log(loged);
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUsr = result.user;
+        console.log(loggedUsr);
+          Swal.fire({
+            title: "User Register Sucessfull.",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        
+
+        // phoot and name
+       updateUser(name, photo)
+         .then(() => {})
+         .catch((error) => console.log("an error occuered", error));
+         from.reset();
+    })
+      
+
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  return (
+    <>
+      <Helmet>
+        <title>BISTRO BOSS | Register</title>
+      </Helmet>
       <div className=" max-w-7xl mx-auto hero min-h-screen bg-base-200">
         <div className=" md:flex gap-10 items-center px-20">
           <div className="w-1/2 ">
@@ -31,6 +72,19 @@ const Registion = () => {
                     name="name"
                     required
                     placeholder="Your Name"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Photo Url</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    name="photo"
+                    required
+                    placeholder="Your Photo Url"
                     className="input input-bordered"
                   />
                 </div>
@@ -85,7 +139,8 @@ const Registion = () => {
           </div>
         </div>
       </div>
-    );
+    </>
+  );
 };
 
 export default Registion;
