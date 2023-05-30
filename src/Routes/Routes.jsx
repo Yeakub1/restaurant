@@ -8,6 +8,8 @@ import Login from "../components/Authentication/LogIn/Login";
 import Registion from "../components/Authentication/Register/Registion";
 import PrivateRoutes from "./PrivateRoutes";
 import Private from "../components/Shared/private/Private";
+import DashBord from "../components/Layout/DashBord";
+import MyCart from "../components/Pages/DashBord/MyCart/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -40,4 +42,14 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/dashbord',
+    element: <DashBord></DashBord>,
+    children: [
+      {
+        path: 'mycart',
+        element: <MyCart></MyCart>
+      },
+    ]
+  }
 ]);

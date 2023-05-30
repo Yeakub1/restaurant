@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import './Navbar.css'
 import { FaCartArrowDown } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
      logOut()
@@ -87,10 +89,14 @@ export default function NavBar() {
               </Link>
             </li>
             <li>
-              <button className=" flex">
-                <FaCartArrowDown />
-                <div className="badge badge-secondary ">+0</div>
-              </button>
+              <Link to="/dashbord/mycart">
+                <button className=" flex">
+                  <FaCartArrowDown />
+                  <div className="badge badge-secondary ">
+                    +{cart?.length || 0}
+                  </div>
+                </button>
+              </Link>
             </li>
           </ul>
         </div>

@@ -14,7 +14,6 @@ const AllItems = () => {
    const dessert = menu.filter((item) => item.category === "dessert");
    const drinks = menu.filter((item) => item.category === "drinks");
 
-
     return (
       <div className="max-w-7xl mx-auto mb-20">
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

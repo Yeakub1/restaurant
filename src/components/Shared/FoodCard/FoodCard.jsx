@@ -1,17 +1,24 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FoodCard = ({ item }) => {
   const { _id, name, recipe, image, price, category } = item;
   const { user } = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
   
   const handleAddToCart = item => {
     console.log(item);
     if (user) {
-      fetch("http://localhost:5000/carts")
+      fetch("http://localhost:5000/carts", {
+      method: 'POST',
+      headers: {
+      'content-type':'application/json'
+      },
+      body: JSON.stringify()
+      })
         .then(res => res.json())
         .then(data => {
         if (data.insertedId) {
@@ -22,7 +29,7 @@ const FoodCard = ({ item }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-        }
+          }
       })
     }
     else {
@@ -35,7 +42,7 @@ const FoodCard = ({ item }) => {
         confirmButtonText: "Login Now!",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login')
+          navigate("/login", { state: { from: location } });
         }
       });
     }

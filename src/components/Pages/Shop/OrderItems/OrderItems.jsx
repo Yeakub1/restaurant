@@ -15,7 +15,6 @@ const OrderItems = ({ itme }) => {
       },
     };
 
-
   return (
     <div className="">
       <Swiper
