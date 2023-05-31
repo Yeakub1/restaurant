@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import img from "../../../assets/others/authentication1.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -11,47 +11,36 @@ const Registion = () => {
  const {
    register,
    handleSubmit,
-   watch,
+   reset,
    formState: { errors },
  } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
-
-  const handleRegisterFrom = (event) => {
-    event.preventDefault();
-    const from = event.target;
-    const name = from.name.value;
-    const photo = from.photo.value;
-    const email = from.email.value;
-    const password = from.password.value;
-
-    createUser(email, password)
-      .then((result) => {
-        const loggedUsr = result.user;
-        console.log(loggedUsr);
-          Swal.fire({
-            title: "User Register Sucessfull.",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
-            },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
-          });
-        
-        // phoot and name
-       updateUser(name, photo)
-         .then(() => {})
-         .catch((error) => console.log("an error occuered", error));
-         from.reset();
-    })
-      
+  const navigate = useNavigate();
 
 
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  
+   const onSubmit = (data) => {
+     createUser(data.email, data.password)
+       .then(result => {
+         const loggedUser = result.user;
+         console.log(loggedUser);
+         updateUser(data.name, data.photoURL)
+           .then(() => {
+             console.log('user profile update');
+             reset();
+             Swal.fire({
+               position: "top-end",
+               icon: "success",
+               title: "User Created Successully",
+               showConfirmButton: false,
+               timer: 1500,
+             });
+              navigate("/login");
+           })
+         .catch(error=> console.log(error))
+       })
+   };
+
+
   return (
     <>
       <Helmet>
@@ -64,7 +53,7 @@ const Registion = () => {
           </div>
           <div className="w-1/2 ">
             <div className="card  flex-shrink-0  max-w-sm shadow-2xl bg-base-100">
-              <form onSubmit={handleRegisterFrom} className="card-body">
+              <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
@@ -72,11 +61,13 @@ const Registion = () => {
 
                   <input
                     type="text"
-                    name="name"
-                    required
+                    {...register("name", { required: true })}
                     placeholder="Your Name"
                     className="input input-bordered"
                   />
+                  {errors.name && (
+                    <span className="text-red-800">Name is required</span>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -85,11 +76,13 @@ const Registion = () => {
 
                   <input
                     type="text"
-                    name="photo"
-                    required
+                    {...register("photoURL", { required: true })}
                     placeholder="Your Photo Url"
                     className="input input-bordered"
                   />
+                  {errors.photo && (
+                    <span className="text-red-800">photoURL is required</span>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -98,11 +91,13 @@ const Registion = () => {
 
                   <input
                     type="email"
-                    name="email"
-                    required
+                    {...register("email", { required: true })}
                     placeholder="email"
                     className="input input-bordered"
                   />
+                  {errors.email && (
+                    <span className="text-red-800">Email is required</span>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -110,11 +105,35 @@ const Registion = () => {
                   </label>
                   <input
                     type="password"
-                    name="password"
-                    required
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    })}
                     placeholder="password"
                     className="input input-bordered"
                   />
+                  {errors.password && (
+                    <p className="text-red-800">Password is required</p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-600">
+                      Password must be 6 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-600">
+                      Password must be less than 20 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-600">
+                      Password must have one Uppercase one lower case, one
+                      number and one special character.
+                    </p>
+                  )}
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
                       Forgot password?
