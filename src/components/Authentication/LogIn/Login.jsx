@@ -12,11 +12,10 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [desiable, setDesiable] = useState(true);
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
     
     const navigate = useNavigate();
     const location = useLocation();
-
     const froms = location.state?.from?.pathname || "/";
     
   useEffect(() => {
@@ -28,8 +27,20 @@ const Login = () => {
    const handleGoogleSignIn = () => {
      googleSignIn()
        .then((result) => {
-         toast.success("Successfully login!");
-         console.log(result.user);
+         const loggedUser = result.user;
+          const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+          fetch("http://localhost:5000/user", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then(() => {
+                navigate(froms, { replace: true });
+            });
+          
        })
        .catch((error) => {
          console.log(error);

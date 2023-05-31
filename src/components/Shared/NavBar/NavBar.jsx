@@ -66,7 +66,7 @@ export default function NavBar() {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+          className={` lg:-ml-72 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
             navbar ? "block" : "hidden"
           }`}
         >
@@ -81,6 +81,11 @@ export default function NavBar() {
             <li>
               <Link className="mr-3" to="/shop">
                 shop
+              </Link>
+            </li>
+            <li>
+              <Link className="mr-3" to="/contact">
+                Contact
               </Link>
             </li>
             <li>

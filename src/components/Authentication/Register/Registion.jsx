@@ -25,16 +25,30 @@ const Registion = () => {
          console.log(loggedUser);
          updateUser(data.name, data.photoURL)
            .then(() => {
-             console.log('user profile update');
-             reset();
-             Swal.fire({
-               position: "top-end",
-               icon: "success",
-               title: "User Created Successully",
-               showConfirmButton: false,
-               timer: 1500,
-             });
-              navigate("/login");
+            const saveUser ={name: data.name, email: data.email}
+             fetch("http://localhost:5000/user", {
+               method: 'POST',
+               headers: {
+               'content-type': 'application/json'
+               },
+               body: JSON.stringify(saveUser)
+             })
+               .then(res => res.json())
+               .then(data => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User Created Successully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/login");
+                }
+             })
+             
+             
            })
          .catch(error=> console.log(error))
        })

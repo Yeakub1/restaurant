@@ -10,10 +10,18 @@ import {
   FaAlignLeft,
   FaShoppingBag,
   FaFacebookMessenger,
+  FaListUl,
+  FaBook,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 
 
 const DashBord = () => {
+
+  // TODO 
+  const isAdmin = true;
+
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -30,36 +38,70 @@ const DashBord = () => {
         <div className="drawer-side bg-[#D1A054]">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80  uppercase">
-            <li>
-              <NavLink>
-                <FaHome /> User Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaCalendarAlt /> reservation
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashbord/mycart">
-                <FaShoppingCart /> My Cart
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaMoneyCheckAlt /> payment history
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaStar /> add review
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaCalendarCheck /> my booking
-              </NavLink>
-            </li>
+            {isAdmin ? (
+              <>
+                {" "}
+                <li>
+                  <NavLink to="/dashbord/home">
+                    <FaHome /> Admin Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashbord/additem">
+                    <FaUtensils /> add items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashbord/mycart">
+                    <FaListUl /> manage items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashbord/booking">
+                    <FaBook /> Manage bookings
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashbord/allusers">
+                    <FaUsers /> all users
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                {" "}
+                <li>
+                  <NavLink>
+                    <FaHome /> User Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink>
+                    <FaCalendarAlt /> reservation
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashbord/mycart">
+                    <FaShoppingCart /> My Cart
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink>
+                    <FaMoneyCheckAlt /> payment history
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink>
+                    <FaStar /> add review
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink>
+                    <FaCalendarCheck /> my booking
+                  </NavLink>
+                </li>
+              </>
+            )}
             <div className="divider"></div>
             <li>
               <NavLink to="/">

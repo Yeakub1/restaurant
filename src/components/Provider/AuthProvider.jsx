@@ -34,10 +34,12 @@ const AuthProvider = ({ children }) => {
       photoURL: photo,
     });
   };
+
   const googleSignIn = () => {
     setLoding(true);
     return signInWithPopup(auth, googleProvider);
   };
+
   const logOut = () => {
     return signOut(auth);
   };
