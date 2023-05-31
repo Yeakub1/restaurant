@@ -4,10 +4,16 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-
+import { useForm } from 'react-hook-form';
+ 
 
 const Registion = () => {
-
+ const {
+   register,
+   handleSubmit,
+   watch,
+   formState: { errors },
+ } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
 
   const handleRegisterFrom = (event) => {
@@ -17,8 +23,6 @@ const Registion = () => {
     const photo = from.photo.value;
     const email = from.email.value;
     const password = from.password.value;
-    const loged = { name, email, password, photo };
-    console.log(loged);
 
     createUser(email, password)
       .then((result) => {
@@ -34,7 +38,6 @@ const Registion = () => {
             },
           });
         
-
         // phoot and name
        updateUser(name, photo)
          .then(() => {})
