@@ -10,6 +10,7 @@ const MyCart = () => {
   const total = cart.reduce((sum, item) => item.price + sum, 0);
 
   const handleDeleteItems = item => {
+    console.log(item);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -38,9 +39,11 @@ const MyCart = () => {
     });
   }
 
+  
+
     return (
-      <div className="max-w-7xl mx-auto">
-        <div className="lg:-mt-60 ">
+      <div className="w-full px-10">
+        <div className=" ">
           <SectionHeading
             subHeding={"---My Cart---"}
             heading={"WANNA ADD MORE?"}

@@ -2,15 +2,71 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaUserAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const AllUsers = () => {
+  const handleDeleteItems = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/${item._id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
+
+  const handleMakeAdmin = item => {
+    fetch(`http://localhost:5000/user/admin/${item._id}`, {
+      method: 'PATCH',
+      headers: {
+      'content-type': 'application/json'
+      },
+      body: JSON.stringify()
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+        refetch()
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${item.name} in an Admin Now`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
+  }
+
     const {data: users=[], refetch } = useQuery(['users'], async () => {
         const res = await fetch("http://localhost:5000/user");
-        return res.json();
+      return res.json();
+      
+
+
     })
     return (
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-10">
         <div className="lg:-mt-96 ">
           <SectionHeading
             subHeding={"---How many??---"}
@@ -49,8 +105,22 @@ const AllUsers = () => {
                       </div>
                     </td>
                     <td>{item.email}</td>
-                    <td className="text-end">{item.price}</td>
-                    <td className="text-red-600 float-right text-xl">
+                    <td>
+                      {item.role === "admin" ? (
+                        "admin"
+                      ) : (
+                        <button
+                          onClick={() => handleMakeAdmin(item)}
+                          className="btn btn-ghost bg-orange-600  text-white"
+                        >
+                          <FaUserAlt />
+                        </button>
+                      )}
+                    </td>
+                    <td
+                      onClick={() => handleDeleteItems(item)}
+                      className="text-orange-600  "
+                    >
                       <FaTrash />
                     </td>
                   </tr>

@@ -119,7 +119,7 @@ const DashBord = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink>
+              <NavLink to='/contact'>
                 <FaFacebookMessenger /> contact
               </NavLink>
             </li>

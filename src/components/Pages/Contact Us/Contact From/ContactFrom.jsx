@@ -38,7 +38,7 @@ const ContactFrom = () => {
               </label>
 
               <input
-                type="text"
+                type="number"
                 {...register("phone", { required: true })}
                 placeholder="Your Phone Number"
                 className="input input-bordered"
