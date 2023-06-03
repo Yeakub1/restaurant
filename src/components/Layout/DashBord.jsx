@@ -15,12 +15,13 @@ import {
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
-
+import useAdmin from "../../Hooks/useAdmin";
 
 const DashBord = () => {
 
-  // TODO 
-  const isAdmin = true;
+  // TODO
+  // const isAdmin = true;
+  const [isAdmin]=useAdmin();
 
   return (
     <div>
@@ -52,7 +53,7 @@ const DashBord = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashbord/mycart">
+                  <NavLink to="/dashbord/manageItem">
                     <FaListUl /> manage items
                   </NavLink>
                 </li>
@@ -119,7 +120,7 @@ const DashBord = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/contact'>
+              <NavLink to="/contact">
                 <FaFacebookMessenger /> contact
               </NavLink>
             </li>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 const useMenu = () => {
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);

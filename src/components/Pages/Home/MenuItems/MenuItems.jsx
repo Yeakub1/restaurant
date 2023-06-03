@@ -1,8 +1,8 @@
 import React from 'react';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
 import Items from '../../../Shared/Items/Items';
-import useMenu from '../../../../Hooks/useMenu';
 import { Link } from 'react-router-dom';
+import useMenu from '../../../../Hooks/useMenu';
 
 const MenuItems = () => {
   const [menu] = useMenu();

@@ -92,10 +92,10 @@ const MyCart = () => {
                     </div>
                   </td>
                   <td>{item.name}</td>
-                  <td className="text-end">{item.price}</td>
+                  <td >{item.price}</td>
                   <td
                     onClick={() => handleDeleteItems(item)}
-                    className="text-red-600 float-right text-xl"
+                    className="text-red-600 "
                   >
                     <FaTrash />
                   </td>

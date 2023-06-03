@@ -39,6 +39,7 @@ const Login = () => {
             .then((res) => res.json())
             .then(() => {
                 navigate(froms, { replace: true });
+              // navigate('/')
             });
           
        })
@@ -130,11 +131,11 @@ const Login = () => {
                     value="Login"
                   />
                 </div>
-                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <Link
                     to="/register"
-                    class="font-medium text-primary hover:underline dark:text-primary-500"
+                    className="font-medium text-primary hover:underline dark:text-primary-500"
                   >
                     Sign up
                   </Link>

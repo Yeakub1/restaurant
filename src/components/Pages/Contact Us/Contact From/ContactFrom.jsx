@@ -6,8 +6,12 @@ const ContactFrom = () => {
      const {
        register,
        reset,
+       handleSubmit,
        formState: { errors },
      } = useForm();
+  
+  const onSubmit = (data) => console.log(data);
+  
     return (
       <div className="max-w-7xl mx-auto">
         <SectionHeading
@@ -15,7 +19,10 @@ const ContactFrom = () => {
           heading={"CONTACT FORM"}
         ></SectionHeading>
 
-        <form className="card-body bg-slate-300">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="card-body bg-slate-300"
+        >
           <div className="grid lg:grid-cols-2 gap-10">
             <div className="form-control">
               <label className="label">
@@ -43,8 +50,8 @@ const ContactFrom = () => {
                 placeholder="Your Phone Number"
                 className="input input-bordered"
               />
-              {errors.photo && (
-                <span className="text-red-800">photoURL is required</span>
+              {errors.phone && (
+                <span className="text-red-800">phone is required</span>
               )}
             </div>
           </div>
@@ -64,26 +71,23 @@ const ContactFrom = () => {
               <span className="text-red-800">Email is required</span>
             )}
           </div>
-          <div className="form-control">
+          <div className="">
             <label className="label">
               <span className="label-text">Message</span>
             </label>
             <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="10" 
-              required
-              className='ps-3 mt-2 rounded-md '
-              placeholder="Message Now"
+              {...register("message", { required: true })}
+              cols="160"
+              rows="10"
+              placeholder="Message"
+              className="rounded-md px-3 "
             ></textarea>
+            {errors.message && (
+              <span className="text-red-800">Message is required</span>
+            )}
           </div>
           <div className="form-control mt-6">
-            <input
-              className="btn btn-primary"
-              type="submit"
-              value="Submit"
-            />
+            <input className="btn btn-primary" type="submit" value="Submit" />
           </div>
         </form>
       </div>

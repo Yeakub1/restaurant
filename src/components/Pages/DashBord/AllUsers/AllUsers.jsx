@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import SectionHeading from '../../../Shared/SectionHeading/SectionHeading';
 import { FaTrash, FaUserAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+  const token = localStorage.getItem("access-token");
 
 const AllUsers = () => {
   const handleDeleteItems = (item) => {
@@ -59,7 +60,11 @@ const AllUsers = () => {
   }
 
     const {data: users=[], refetch } = useQuery(['users'], async () => {
-        const res = await fetch("http://localhost:5000/user");
+      const res = await fetch("http://localhost:5000/user", {
+        headers: {
+          authorization: `beraer ${token}`,
+        },
+      });
       return res.json();
       
 

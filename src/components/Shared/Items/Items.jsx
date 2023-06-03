@@ -11,11 +11,11 @@ const Items = ({ item }) => {
         alt=""
       />
       <div className="">
-        <h1 className="flex justify-between">
+        <div className="flex justify-between">
           <h1 className="uppercase font-bold "> {name}</h1>
           <p className="font-semibold text-yellow-600"> {price}</p>
-        </h1>
-        <p>{recipe}</p>
+        </div>
+        <h1>{recipe}</h1>
       </div>
     </div>
   );

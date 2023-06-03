@@ -61,7 +61,7 @@ const FoodCard = ({ item }) => {
         <h1 className="font-semibold bg-black text-white px-3 absolute right-0 top-0 mr-4  mt-2">
           $ {price}
         </h1>
-        <p>{recipe}</p>
+        <h1>{recipe}</h1>
         <button
           onClick={() => handleAddToCart(item)}
           className="mt-10 btn btn-outline bg-slate-200 border-0 border-b-4 "
